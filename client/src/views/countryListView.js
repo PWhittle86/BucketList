@@ -5,7 +5,7 @@ var countryListView = function(){
 countryListView.prototype.showListOfCountries = function(countries){
   console.log(countries);
 
-  let selectTag = document.getElementById('countriesDropDown');
+  let selectTag = document.getElementById('countryDropDown');
 
   countries.forEach(function(country, index){
     let option = document.createElement('option');
