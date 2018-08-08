@@ -1,6 +1,7 @@
 const BucketListView = require('./views/bucketListView.js');
 const CountryListView = require('./views/countryListView.js');
 const Request = require('./services/request.js');
+const MapWrapper = require('./views/mapWrapper.js');
 
 const bucketListView = new BucketListView();
 const countryListView = new CountryListView();
@@ -19,7 +20,13 @@ const appStart = function(){
   console.log('Hello world!')
   // request.get(getAllBucketListCountries);
   // request.get(countryRequest);
-  debugger;
+
+
+  const osmLayer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
+  const containerID = "mapContainer";
+  const coords = [-50.6067956, 165.968396];
+  const zoom = 14;
+  mainMap = new MapWrapper(containerID, coords, zoom);
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
