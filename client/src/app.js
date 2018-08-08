@@ -16,9 +16,8 @@ const getAllBucketListCountries = function(allCountries){
 }
 
 const appStart = function(){
-  console.log('Hello world!')
   // request.get(getAllBucketListCountries);
-  // request.get(countryRequest);
+  request.get(countryRequest);
   debugger;
 }
 
