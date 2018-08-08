@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const BucketListView = __webpack_require__(/*! ./views/bucketListView.js */ \"./client/src/views/bucketListView.js\");\nconst CountryListView = __webpack_require__(/*! ./views/countryListView.js */ \"./client/src/views/countryListView.js\");\nconst Request = __webpack_require__(/*! ./services/request.js */ \"./client/src/services/request.js\");\n\nconst bucketListView = new BucketListView();\nconst countryListView = new CountryListView();\n\nconst countryRequest = new Request('https://restcountries.eu/rest/v2/all');\nconst bucketRequest = new Request('http://localhost:300/api/bucket_countries');\n\n\nconst getAllBucketListCountries = function(allCountries){\n  for(country of allCountries){\n    bucketListView.addCountry(country);\n  }\n}\n\nconst appStart = function(){\n  console.log('Hello world!')\n  // request.get(getAllBucketListCountries);\n  // request.get(countryRequest);\n  debugger;\n}\n\ndocument.addEventListener('DOMContentLoaded', appStart);\n\n\n//# sourceURL=webpack:///./client/src/app.js?");
+eval("const BucketListView = __webpack_require__(/*! ./views/bucketListView.js */ \"./client/src/views/bucketListView.js\");\nconst CountryListView = __webpack_require__(/*! ./views/countryListView.js */ \"./client/src/views/countryListView.js\");\nconst Request = __webpack_require__(/*! ./services/request.js */ \"./client/src/services/request.js\");\nconst MapWrapper = __webpack_require__(/*! ./views/mapWrapper.js */ \"./client/src/views/mapWrapper.js\");\n\nconst bucketListView = new BucketListView();\nconst countryListView = new CountryListView();\n\nconst countryRequest = new Request('https://restcountries.eu/rest/v2/all');\nconst bucketRequest = new Request('http://localhost:300/api/bucket_countries');\n\n\nconst getAllBucketListCountries = function(allCountries){\n  for(country of allCountries){\n    bucketListView.addCountry(country);\n  }\n}\n\nconst appStart = function(){\n  console.log('Hello world!')\n  // request.get(getAllBucketListCountries);\n  // request.get(countryRequest);\n\n\n  const osmLayer = new L.TileLayer(\"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\")\n  const containerID = \"mapContainer\";\n  const coords = [-50.6067956, 165.968396];\n  const zoom = 14;\n  mainMap = new MapWrapper(containerID, coords, zoom);\n}\n\ndocument.addEventListener('DOMContentLoaded', appStart);\n\n\n//# sourceURL=webpack:///./client/src/app.js?");
 
 /***/ }),
 
@@ -127,6 +127,17 @@ eval("var BucketListView = function(){\n  this.bucketLists = [];\n}\n\nBucketLis
 /***/ (function(module, exports) {
 
 eval("var countryListView = function(){\n  this.countries = [];\n}\n\ncountryListView.prototype.showListOfCountries = function(countries){\n  console.log(countries);\n\n  let selectTag = document.getElementById('countriesDropDown');\n\n  countries.forEach(function(country, index){\n    let option = document.createElement('option');\n    option.value = index;\n    option.innerText = country.name;\n    selectTag.appendChild(option);\n  });\n};\n\n\n//Copy to app.js\n// countryListView.prototype.handleSelected = function(countries){\n//   let selectTag = document.getElementById('countriesDropDown');\n//   selectTag.addEventListener('change', function(){\n//     const country = countries[this.value];\n//     console.log(country);\n//     bucketLists.render(country);\n//\n//     const coords = [country.latlng[0], country.latlng[1]];\n//     map.addMarker(coords);\n//   });\n// };\n\nmodule.exports = countryListView;\n\n\n//# sourceURL=webpack:///./client/src/views/countryListView.js?");
+
+/***/ }),
+
+/***/ "./client/src/views/mapWrapper.js":
+/*!****************************************!*\
+  !*** ./client/src/views/mapWrapper.js ***!
+  \****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("const MapWrapper = function(containerID, coords, zoom) {\n  const osmLayer = new L.TileLayer(\"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\");\n  this.map = L.map(containerID).setView(coords, zoom).addLayer(osmLayer);\n}\n\nMapWrapper.prototype.currentLocation = function (coords) {\n  this.map.setView(coords);\n};\n\nMapWrapper.prototype.moveMap = function (coords) {\n this.map.flyTo(coords);\n};\n\nMapWrapper.prototype.addMarker = function(coords){\n  L.marker(coords).addTo(this.map);\n}\n\n\n//# sourceURL=webpack:///./client/src/views/mapWrapper.js?");
 
 /***/ })
 
