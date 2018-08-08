@@ -47,10 +47,63 @@ MongoClient.connect('mongodb://localhost:27017', function(err, client){
       });
     });
 
-    
+    server.delete('/api/bucket_countries', function(req, res){
+      const filterObject = {};
+      const bucket_countriesCollection = db.collection('bucket_countries');
+      bucket_countriesCollection.deleteMany(filterObject, function(err, result){
+        if(err){
+          res.status(500);
+          res.send();
+        }
 
+        res.status(204);
+        res.send();
+      });
+    });
 
+    server.get('/api/bucket_countries/:id', function(req, res){
+      const bucket_countriesCollection = db.collection('bucket_countries');
+      const objectID = ObjectID(req.params.id);
+      const criteria = {_id: objectID};
+      bucket_countriesCollection.findOne(criteria, function(err,country){
+        if(err){
+          res.status(500);
+          res.send();
+        }
+        res.status(200);
+        res.json(country);
+      });
+    });
 
+    server.delete('/api/bucket_countries/:id', function(req, res){
+      const bucket_countriesCollection = db.collection('bucket_countries');
+      const objectID = ObjectID(req.params.id);
+      const criteria = {_id: objectID};
+      bucket_countriesCollection.deleteOne(criteria, function(err, result){
+        if(err){
+          res.status(500);
+          res.send();
+        }
+        res.status(200);
+        res.json(result);
+      });
+    });
+
+    server.put('/api/bucket_countries/:id', function(req, res){
+      const bucket_countriesCollection = db.collection('bucket_countries');
+      const objectID = ObjectID(req.params.id);
+      const filterObject = {_id: objectID};
+      const updatedData = req.body;
+      bucket_countriesCollection.update(filterObject, updatedData, function(err, result){
+        if(err){
+          res.status(500);
+          res.send();
+        }
+        res.status(200);
+        res.json(result);
+        res.send();
+      });
+    });
 
     server.listen(3000, function(){
         console.log("Listening on port 3000");
