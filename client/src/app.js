@@ -24,8 +24,8 @@ const appStart = function(){
 
   const osmLayer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
   const containerID = "mapContainer";
-  const coords = [-50.6067956, 165.968396];
-  const zoom = 14;
+  const coords = [55.857236, -3.166804];
+  const zoom = 1;
   const mainMap = new MapWrapper(containerID, coords, zoom);
 }
 
