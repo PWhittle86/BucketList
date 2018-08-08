@@ -1,7 +1,6 @@
 {
   "name": "day3",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,10 +12,21 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "expres": "0.0.5",
     "express": "^4.16.3",
     "mongodb": "^3.1.1",
     "nodemon": "^1.18.3",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PWhittle86/BucketList.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PWhittle86/BucketList/issues"
+  },
+  "homepage": "https://github.com/PWhittle86/BucketList#readme",
+  "description": ""
 }
