@@ -1,7 +1,7 @@
 {
   "name": "day3",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
@@ -12,7 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "expres": "0.0.5",
     "express": "^4.16.3",
     "mongodb": "^3.1.1",
     "nodemon": "^1.18.3",
