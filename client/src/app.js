@@ -26,7 +26,7 @@ const appStart = function(){
   const containerID = "mapContainer";
   const coords = [-50.6067956, 165.968396];
   const zoom = 14;
-  mainMap = new MapWrapper(containerID, coords, zoom);
+  const mainMap = new MapWrapper(containerID, coords, zoom);
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
