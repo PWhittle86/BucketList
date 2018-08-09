@@ -7,6 +7,7 @@ const MapWrapper = function(containerID, coords, zoom) {
 	ext: 'png'
 });
   this.map = L.map(containerID).addLayer(osmLayer).setView(coords, zoom);
+  
 }
 
 // MapWrapper.prototype.currentLocation = function (coords) {
@@ -19,6 +20,10 @@ MapWrapper.prototype.moveMap = function (coords) {
 
 MapWrapper.prototype.addMarker = function(coords, country){
   L.marker(coords).addTo(this.map).bindPopup(country.name);
+}
+
+MapWrapper.prototype.removeMarkers = function(markers){
+  markerGroup.removeLayer();
 }
 
 module.exports = MapWrapper;

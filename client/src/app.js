@@ -41,7 +41,7 @@ const handleDeleteAllCountriesButton = function(allCountries){
 
 const deleteAllCountriesComplete = function(){
   bucketListView.clear();
-  mainMap.clearLayer
+  //mainMap.removeMarkers();
 }
 
 
