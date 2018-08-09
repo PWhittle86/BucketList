@@ -1,8 +1,10 @@
 const MapWrapper = function(containerID, coords, zoom) {
-  const osmLayer = new L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
-	attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+  const osmLayer = new L.tileLayer('https://stamen-tiles-{s}.a.ssl.fastly.net/watercolor/{z}/{x}/{y}.{ext}', {
+	attribution: 'Map tiles by <a href="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
 	subdomains: 'abcd',
-	maxZoom: 19
+	minZoom: 1,
+	maxZoom: 16,
+	ext: 'png'
 });
   this.map = L.map(containerID).addLayer(osmLayer).setView(coords, zoom);
 }

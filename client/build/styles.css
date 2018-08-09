@@ -13,23 +13,38 @@
   box-shadow: 5px 10px #888888;
 }
 
-h1{
+#countryListContainer{
+  display: flex;
+  justify-content: center;
+}
+
+#countryList{
+  padding-top: 20px;
   text-align: center;
-  color: #FFFFFF;
-  font-family: 'Josefin Sans', sans-serif;
+  max-width: 375px;
+  vertical-align: middle;
 }
 
 header{
-  background-color: #424B54;
+  background-color: #EA526F;
+  font-size: 25px;
+  text-align: center;
+  color: #FFFFFF;
+  Font-Family: 'Permanent Marker', Cursive;
+}
+
+body{
+  background-color: #FCEADE;
+  Font-Family: 'Overpass', Sans-Serif;
 }
 
 footer{
   text-align: center;
-  font-family: 'Open Sans', sans-serif;
+  Font-Family: 'Overpass', Sans-Serif;
   position: fixed;
   z-index: 1;
   width: 100%;
   bottom: 0;
-  background-color: #424B54;
+  background-color: #EA526F;
   color: #FFFFFF;
 }
