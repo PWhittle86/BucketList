@@ -1,3 +1,4 @@
+const FurtherInfoView = require('./furtherInfoView.js');
 
 var BucketListView = function(){
   this.bucketLists = [];
@@ -21,9 +22,11 @@ BucketListView.prototype.render = function(country){
   ul.appendChild(li);
   li.addEventListener('click', function(){
     console.log("country has been clicked");
-    console.log(country);
+    let furtherInfo = new FurtherInfoView();
+    furtherInfo.clearContent();
+    furtherInfo.render(country);
   });
-  
+
 }
 
 
