@@ -17,6 +17,8 @@ const getAllBucketListCountries = function(allCountries){
   }
 }
 
+
+
 const pullCountriesFromCountriesAPI = function(countriesAPI){
   for(country of countriesAPI){
     allCountries.push(country);
@@ -31,7 +33,9 @@ const handleSelected = function(countries){
   bucketRequest.post(country);
 
   const coords = [country.latlng[0], country.latlng[1]];
+
   mainMap.addMarker(coords, country);
+
 };
 
 
@@ -41,6 +45,7 @@ const handleDeleteAllCountriesButton = function(allCountries){
 
 const deleteAllCountriesComplete = function(){
   bucketListView.clear();
+  mainMap.clearLayer
 }
 
 
@@ -52,14 +57,20 @@ const appStart = function(){
   const addCountryButton = document.getElementById('addCountry');
   addCountryButton.addEventListener('click', handleSelected);
 
+
   const deleteAllCountriesButton = document.querySelector('#deleteButton');
   deleteAllCountriesButton.addEventListener('click', handleDeleteAllCountriesButton);
+
 
   const osmLayer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
   const containerID = "mapContainer";
   const coords = [55.857236, -3.166804];
   const zoom = 2;
+
   mainMap = new MapWrapper(containerID, coords, zoom);
+  //markers = mainMap.markerClusterGroup();
+  //console.log(markers);
+
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
