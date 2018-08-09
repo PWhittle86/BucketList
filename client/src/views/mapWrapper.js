@@ -15,8 +15,8 @@ MapWrapper.prototype.moveMap = function (coords) {
  this.map.flyTo(coords);
 };
 
-MapWrapper.prototype.addMarker = function(coords){
-  L.marker(coords).addTo(this.map).bindPopup("Country Name placeholder");
+MapWrapper.prototype.addMarker = function(coords, country){
+  L.marker(coords).addTo(this.map).bindPopup(country.name);
 }
 
 module.exports = MapWrapper;

@@ -33,7 +33,7 @@ const handleSelected = function(countries){
 
   const coords = [country.latlng[0], country.latlng[1]];
   console.log(coords);
-  mainMap.addMarker(coords);
+  mainMap.addMarker(coords, country);
 };
 
 const appStart = function(){
