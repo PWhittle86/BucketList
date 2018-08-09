@@ -11,6 +11,9 @@ FurtherInfoView.prototype.clearContent = function(){
 
 FurtherInfoView.prototype.render = function(country){
   let divTag = document.querySelector('#furtherInfo');
+  let header = document.createElement('p');
+  header.innerText = 'Country Info:';
+  divTag.appendChild(header);
   const ul = document.createElement('ul');
   const name = document.createElement('li');
   name.innerText = `Name: ${country.name}`;

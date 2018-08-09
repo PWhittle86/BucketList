@@ -55,6 +55,12 @@ button:hover{
   cursor: pointer;
 }
 
+p{
+  font-weight: bold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
 #deleteButton:hover{
   padding-top: 5px;
   border: none;
