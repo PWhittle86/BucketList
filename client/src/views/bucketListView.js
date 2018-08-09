@@ -10,8 +10,10 @@ BucketListView.prototype.addCountry = function(country){
   this.render(country);
 }
 
-BucketListView.prototype.clear = function(){
+BucketListView.prototype.clear = function(country) {
   this.bucketLists = [];
+  const ul = document.querySelector('#countries');
+  ul.innerHTML = '';
 }
 
 BucketListView.prototype.render = function(country){
@@ -25,6 +27,10 @@ BucketListView.prototype.render = function(country){
     let furtherInfo = new FurtherInfoView();
     furtherInfo.clearContent();
     furtherInfo.render(country);
+
+    const coords = [country.latlng[0], country.latlng[1]];
+    const zoom = 6;
+    mainMap.moveMap(coords, zoom);
   });
 
 }

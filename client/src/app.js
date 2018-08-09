@@ -14,6 +14,9 @@ allCountries = [];
 const getAllBucketListCountries = function(allCountries){
   for(country of allCountries){
     bucketListView.render(country);
+    const coords = [country.latlng[0], country.latlng[1]];
+
+    mainMap.addMarker(coords, country);
   }
 }
 
@@ -29,16 +32,31 @@ const handleSelected = function(countries){
   let selectTag = document.getElementById('countryDropDown');
 
   const country = allCountries[selectTag.value];
-  console.log(country);
   bucketListView.addCountry(country);
   bucketRequest.post(country);
 
   const coords = [country.latlng[0], country.latlng[1]];
-  console.log(coords);
-  mainMap.addMarker(coords);
 
+  mainMap.addMarker(coords, country);
 
 };
+
+
+const handleDeleteAllCountriesButton = function(allCountries){
+  bucketRequest.delete(deleteAllCountriesComplete);
+};
+
+const deleteAllCountriesComplete = function(){
+  bucketListView.clear();
+  mainMap.clearLayer
+}
+
+const handleResetMapZoomButton = function(){
+  const coords = [55.857236, -3.166804];
+  const zoom = 2;
+  mainMap.moveMap(coords, zoom);
+}
+
 
 const appStart = function(){
   console.log('Hello world!')
@@ -49,13 +67,21 @@ const appStart = function(){
   addCountryButton.addEventListener('click', handleSelected);
 
 
+  const deleteAllCountriesButton = document.querySelector('#deleteButton');
+  deleteAllCountriesButton.addEventListener('click', handleDeleteAllCountriesButton);
+
+  const resetMapZoomButton = document.querySelector('#resetmapzoom')
+  resetMapZoomButton.addEventListener('click', handleResetMapZoomButton);
+
 
   const osmLayer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
   const containerID = "mapContainer";
   const coords = [55.857236, -3.166804];
   const zoom = 2;
- mainMap = new MapWrapper(containerID, coords, zoom);
 
+  mainMap = new MapWrapper(containerID, coords, zoom);
+  //markers = mainMap.markerClusterGroup();
+  //console.log(markers);
 
 }
 

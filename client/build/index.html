@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <title>Countries Project</title>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.3/dist/leaflet.css"
- integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
- crossorigin=""/>
+  integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ=="
+  crossorigin=""/>
   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
- integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
- crossorigin=""></script>
-  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans|Open+Sans" rel="stylesheet">
+  integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
+  crossorigin=""></script>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Josefin+Sans" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <script src="bundle.js"></script>
 </head>
@@ -18,30 +18,30 @@
 </header>
 
 <body>
-  <div id="countryList">
-    <p>
-      Please select a country to add to your Bucketlist:
-    </p>
-    <select id= 'countryDropDown'></select>
-    <button id='addCountry' type="submit">Add Country</button>
+  <div id ='countryListContainer'>
+    <div id="countryList">
+      <p>
+        Please select a country to add to your Bucketlist!
+      </p>
+      <select id= 'countryDropDown'></select>
+      <button id='addCountry' type="submit">Add Country</button>
+    </div>
   </div>
 
-  <div id="mapContainer">
+  <div id="mapContainer"></div>
+<button id="resetmapzoom" type="submit">Reset Zoom</button>
+  <div id= "infoPane">
 
+    <div id="bucketListContainer">
+      <p id = "bucketListHeader">Countries List:</p>
+      <ul id="countries"></ul>
+      <button id="deleteButton" type="submit">Delete List</button></div>
+    <div id='furtherInfo'>
+      <p id ='countryInfoHeader'>Country Info:</p>
+    </div>
   </div>
 
-  <div id="bucketListContainer">
-    <p>
-      Countries you wish to visit:
-    </p>
-    <ul id="countries">
-    
-    </ul>
-    <button id="deleteButton" type="submit">Delete List</button>
-  </div>
-  <div id='furtherInfo'>
-
-  </div>
 </body>
+
 <footer><p>Created by Angelina Blyth, Roddy Daly and Peter Whittle.</p></footer>
 </html>
