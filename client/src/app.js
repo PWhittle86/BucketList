@@ -13,7 +13,6 @@ allCountries = [];
 
 const getAllBucketListCountries = function(allCountries){
   for(country of allCountries){
-    // countryListView.addCountry(country);
     bucketListView.render(country);
   }
 }
@@ -27,17 +26,14 @@ const pullCountriesFromCountriesAPI = function(countriesAPI){
 const handleSelected = function(countries){
   let selectTag = document.getElementById('countryDropDown');
 
-    const country = allCountries[selectTag.value];
-    // console.log(country[this.value]);
-    // debugger;
-    console.log(country);
-    bucketListView.addCountry(country);
-    bucketRequest.post(country);
+  const country = allCountries[selectTag.value];
+  console.log(country);
+  bucketListView.addCountry(country);
+  bucketRequest.post(country);
 
-
-    //const coords = [country.latlng[0], country.latlng[1]];
-    //map.addMarker(coords);
-
+  const coords = [country.latlng[0], country.latlng[1]];
+  console.log(coords);
+  mainMap.addMarker(coords);
 };
 
 const appStart = function(){
@@ -52,7 +48,7 @@ const appStart = function(){
   const containerID = "mapContainer";
   const coords = [55.857236, -3.166804];
   const zoom = 2;
-  const mainMap = new MapWrapper(containerID, coords, zoom);
+ mainMap = new MapWrapper(containerID, coords, zoom);
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
