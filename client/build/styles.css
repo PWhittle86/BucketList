@@ -1,3 +1,8 @@
+*{
+  /* not sure if this messes up the margin for the map? */
+  margin: 0;
+}
+
 #mapContainer {
   height: 400px;
   width: 80%;
@@ -10,8 +15,21 @@
 
 h1{
   text-align: center;
+  color: #FFFFFF;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-*{
-  background-color: #CDD5D1;
+header{
+  background-color: #424B54;
+}
+
+footer{
+  text-align: center;
+  font-family: 'Open Sans', sans-serif;
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+  background-color: #424B54;
+  color: #FFFFFF;
 }
