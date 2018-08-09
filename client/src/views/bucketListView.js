@@ -9,8 +9,10 @@ BucketListView.prototype.addCountry = function(country){
   this.render(country);
 }
 
-BucketListView.prototype.clear = function(){
+BucketListView.prototype.clear = function(country) {
   this.bucketLists = [];
+  const ul = document.querySelector('#countries');
+  ul.innerHTML = '';
 }
 
 BucketListView.prototype.render = function(country){

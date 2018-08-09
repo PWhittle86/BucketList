@@ -115,7 +115,7 @@ eval("const Request = function(url) {\n  this.url = url;\n}\n\nRequest.prototype
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nvar BucketListView = function(){\n  this.bucketLists = [];\n}\n\nBucketListView.prototype.addCountry = function(country){\n  this.bucketLists.push(country);\n\n  this.render(country);\n}\n\nBucketListView.prototype.clear = function(){\n  this.bucketLists = [];\n}\n\nBucketListView.prototype.render = function(country){\n  const ul = document.querySelector('#countries');\n  const li = document.createElement('li');\n  console.log(country);\n  li.innerText = country.name;\n  ul.appendChild(li);\n}\n\n\nmodule.exports = BucketListView;\n\n\n//# sourceURL=webpack:///./client/src/views/bucketListView.js?");
+eval("\nvar BucketListView = function(){\n  this.bucketLists = [];\n}\n\nBucketListView.prototype.addCountry = function(country){\n  this.bucketLists.push(country);\n\n  this.render(country);\n}\n\nBucketListView.prototype.clear = function(country) {\n  this.bucketLists = [];\n  const ul = document.querySelector('#countries');\n  ul.innerHTML = '';\n}\n\nBucketListView.prototype.render = function(country){\n  const ul = document.querySelector('#countries');\n  const li = document.createElement('li');\n  console.log(country);\n  li.innerText = country.name;\n  ul.appendChild(li);\n}\n\n\nmodule.exports = BucketListView;\n\n\n//# sourceURL=webpack:///./client/src/views/bucketListView.js?");
 
 /***/ }),
 
