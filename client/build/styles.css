@@ -82,6 +82,10 @@ button:hover{
   margin: 10px;
 }
 
+#country_name{
+  cursor: pointer;
+}
+
 #infoPane{
   display: flex;
   justify-content: center;
@@ -112,7 +116,14 @@ padding-bottom: 15px;
   overflow: scroll;
 }
 
+#countryInfoHeader{
+font-weight: bold;
+padding-top: 15px;
+padding-bottom: 15px;
+}
+
 #furtherInfo{
+  text-align: center;
   margin: 15px;
   margin-bottom: 40px;
   height: 300px;
