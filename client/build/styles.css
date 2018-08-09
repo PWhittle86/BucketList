@@ -51,7 +51,7 @@ button:hover{
   font: inherit;
   color: inherit;
   transition: background-color 500ms;
-  background-color: #276FBF;
+  background-color: #2B7CD8;
   cursor: pointer;
 }
 
@@ -84,6 +84,7 @@ button:hover{
 
 #country_name{
   cursor: pointer;
+  padding: 5px;
 }
 
 #infoPane{
@@ -97,7 +98,6 @@ button:hover{
   margin-top: 15px;
   margin-left: 15px;
   margin-right: 15px;
-  border: solid 1px black;
 }
 
 #bucketListHeader {
@@ -112,8 +112,8 @@ padding-bottom: 15px;
   margin-bottom: 40px;
   height: 300px;
   width: 400px;
-  border: solid 1px black;
   overflow: scroll;
+  background-color: #EFEEED;
 }
 
 #countryInfoHeader{
@@ -128,6 +128,6 @@ padding-bottom: 15px;
   margin-bottom: 40px;
   height: 300px;
   width: 400px;
-  border: solid 1px black;
   overflow: scroll;
+  background-color: #EFEEED;
 }
