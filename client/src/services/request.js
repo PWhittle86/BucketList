@@ -15,7 +15,7 @@ Request.prototype.get = function(callback) {
   request.send();
 };
 
-Request.prototype.post = function(callback, body){
+Request.prototype.post = function(body){
   const request = new XMLHttpRequest();
   request.open("POST", this.url);
   request.setRequestHeader("Content-Type", "application/json");
@@ -24,7 +24,7 @@ Request.prototype.post = function(callback, body){
       return;
     }
     const responseBody = JSON.parse(this.responseText);
-    callback(responseBody);
+    // callback(responseBody);
   });
   request.send(JSON.stringify(body));
 }
