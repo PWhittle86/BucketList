@@ -94,6 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 eval("const BucketListView = __webpack_require__(/*! ./views/bucketListView.js */ \"./client/src/views/bucketListView.js\");\nconst CountryListView = __webpack_require__(/*! ./views/countryListView.js */ \"./client/src/views/countryListView.js\");\nconst Request = __webpack_require__(/*! ./services/request.js */ \"./client/src/services/request.js\");\nconst MapWrapper = __webpack_require__(/*! ./views/mapWrapper.js */ \"./client/src/views/mapWrapper.js\");\n\nconst bucketListView = new BucketListView();\nconst countryListView = new CountryListView();\n\nconst countryRequest = new Request('https://restcountries.eu/rest/v2/all');\nconst bucketRequest = new Request('http://localhost:3000/api/bucket_countries');\n\nallCountries = [];\n\nconst getAllBucketListCountries = function(allCountries){\n  for(country of allCountries){\n    bucketListView.render(country);\n  }\n}\n\nconst pullCountriesFromCountriesAPI = function(countriesAPI){\n  for(country of countriesAPI){\n    allCountries.push(country);\n  }\n  countryListView.showListOfCountries(allCountries);\n}\nconst handleSelected = function(countries){\n  let selectTag = document.getElementById('countryDropDown');\n\n  const country = allCountries[selectTag.value];\n  bucketListView.addCountry(country);\n  bucketRequest.post(country);\n\n  const coords = [country.latlng[0], country.latlng[1]];\n  mainMap.addMarker(coords, country);\n};\n\n\nconst handleDeleteAllCountriesButton = function(allCountries){\n  bucketRequest.delete(deleteAllCountriesComplete);\n};\n\nconst deleteAllCountriesComplete = function(){\n  bucketListView.clear();\n  mainMap.clearLayer\n}\n\n\nconst appStart = function(){\n  console.log('Hello world!')\n  bucketRequest.get(getAllBucketListCountries);\n  countryRequest.get(pullCountriesFromCountriesAPI);\n\n  const addCountryButton = document.getElementById('addCountry');\n  addCountryButton.addEventListener('click', handleSelected);\n\n  const deleteAllCountriesButton = document.querySelector('#deleteButton');\n  deleteAllCountriesButton.addEventListener('click', handleDeleteAllCountriesButton);\n\n  const osmLayer = new L.TileLayer(\"http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png\")\n  const containerID = \"mapContainer\";\n  const coords = [55.857236, -3.166804];\n  const zoom = 2;\n  mainMap = new MapWrapper(containerID, coords, zoom);\n  //markers = mainMap.markerClusterGroup();\n  //console.log(markers);\n}\n\ndocument.addEventListener('DOMContentLoaded', appStart);\n\n\n//# sourceURL=webpack:///./client/src/app.js?");
+fo
 
 /***/ }),
 
@@ -113,7 +114,8 @@ eval("const Request = function(url) {\n  this.url = url;\n}\n\nRequest.prototype
   !*** ./client/src/views/bucketListView.js ***!
   \********************************************/
 /*! no static exports found */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
 
 eval("\nvar BucketListView = function(){\n  this.bucketLists = [];\n}\n\nBucketListView.prototype.addCountry = function(country){\n  this.bucketLists.push(country);\n\n  this.render(country);\n}\n\nBucketListView.prototype.clear = function(country) {\n  this.bucketLists = [];\n  const ul = document.querySelector('#countries');\n  ul.innerHTML = '';\n}\n\nBucketListView.prototype.render = function(country){\n  const ul = document.querySelector('#countries');\n  const li = document.createElement('li');\n  console.log(country);\n  li.innerText = country.name;\n  ul.appendChild(li);\n}\n\n\nmodule.exports = BucketListView;\n\n\n//# sourceURL=webpack:///./client/src/views/bucketListView.js?");
 
@@ -127,6 +129,17 @@ eval("\nvar BucketListView = function(){\n  this.bucketLists = [];\n}\n\nBucketL
 /***/ (function(module, exports) {
 
 eval("var countryListView = function(){\n  this.countries = [];\n}\n\ncountryListView.prototype.showListOfCountries = function(countries){\n  console.log(countries);\n\n  let selectTag = document.getElementById('countryDropDown');\n\n  countries.forEach(function(country, index){\n    let option = document.createElement('option');\n    option.value = index;\n    option.innerText = country.name;\n    selectTag.appendChild(option);\n  });\n};\n\n\n//Copy to app.js\n// countryListView.prototype.handleSelected = function(countries){\n//   let selectTag = document.getElementById('countriesDropDown');\n//   selectTag.addEventListener('change', function(){\n//     const country = countries[this.value];\n//     console.log(country);\n//     bucketLists.render(country);\n//\n//     const coords = [country.latlng[0], country.latlng[1]];\n//     map.addMarker(coords);\n//   });\n// };\n\nmodule.exports = countryListView;\n\n\n//# sourceURL=webpack:///./client/src/views/countryListView.js?");
+
+/***/ }),
+
+/***/ "./client/src/views/furtherInfoView.js":
+/*!*********************************************!*\
+  !*** ./client/src/views/furtherInfoView.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("var FurtherInfoView = function(){\n  this.country = [];\n}\n\nFurtherInfoView.prototype.clearContent = function(){\n  let divTag = document.querySelector('#furtherInfo');\n  while (divTag.hasChildNodes()){\n    divTag.removeChild(divTag.lastChild);\n  }\n}\n\nFurtherInfoView.prototype.render = function(country){\n  let divTag = document.querySelector('#furtherInfo');\n  const ul = document.createElement('ul');\n  const name = document.createElement('li');\n  name.innerText = `Name: ${country.name}`;\n  ul.appendChild(name);\n  const capital = document.createElement('li');\n  capital.innerText = `Capital: ${country.capital}`;\n  ul.appendChild(capital);\n  const language = document.createElement('li');\n  language.innerText = `Main Language: ${country.languages[0].name}`;\n  ul.appendChild(language);\n  const pop = document.createElement('li');\n  pop.innerText = `Population: ${country.population}`;\n  ul.appendChild(pop);\n  divTag.appendChild(ul);\n}\n\nmodule.exports = FurtherInfoView;\n\n\n//# sourceURL=webpack:///./client/src/views/furtherInfoView.js?");
 
 /***/ }),
 
