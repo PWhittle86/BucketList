@@ -24,11 +24,29 @@ const pullCountriesFromCountriesAPI = function(countriesAPI){
   }
   countryListView.showListOfCountries(allCountries);
 }
+const handleSelected = function(countries){
+  let selectTag = document.getElementById('countryDropDown');
+
+    const country = allCountries[selectTag.value];
+    // console.log(country[this.value]);
+    // debugger;
+    console.log(country);
+    bucketListView.addCountry(country);
+    bucketRequest.post(country);
+
+
+    //const coords = [country.latlng[0], country.latlng[1]];
+    //map.addMarker(coords);
+
+};
 
 const appStart = function(){
   console.log('Hello world!')
   bucketRequest.get(getAllBucketListCountries);
   countryRequest.get(pullCountriesFromCountriesAPI);
+
+  const addCountryButton = document.getElementById('addCountry');
+  addCountryButton.addEventListener('click', handleSelected);
 
   const osmLayer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
   const containerID = "mapContainer";
