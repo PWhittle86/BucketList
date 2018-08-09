@@ -13,8 +13,8 @@ const MapWrapper = function(containerID, coords, zoom) {
 //   this.map.setView(coords);
 // };
 
-MapWrapper.prototype.moveMap = function (coords) {
- this.map.flyTo(coords);
+MapWrapper.prototype.moveMap = function (coords, zoom) {
+ this.map.flyTo(coords, zoom);
 };
 
 MapWrapper.prototype.addMarker = function(coords, country){

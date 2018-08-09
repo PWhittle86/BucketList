@@ -14,6 +14,9 @@ allCountries = [];
 const getAllBucketListCountries = function(allCountries){
   for(country of allCountries){
     bucketListView.render(country);
+    const coords = [country.latlng[0], country.latlng[1]];
+
+    mainMap.addMarker(coords, country);
   }
 }
 
