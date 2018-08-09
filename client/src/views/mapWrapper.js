@@ -16,7 +16,7 @@ MapWrapper.prototype.moveMap = function (coords) {
 };
 
 MapWrapper.prototype.addMarker = function(coords){
-  L.marker(coords).addTo(this.map);
+  L.marker(coords).addTo(this.map).bindPopup("Country Name placeholder");
 }
 
 module.exports = MapWrapper;
