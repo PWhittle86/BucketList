@@ -41,6 +41,7 @@ const handleDeleteAllCountriesButton = function(allCountries){
 
 const deleteAllCountriesComplete = function(){
   bucketListView.clear();
+  mainMap.clearLayer
 }
 
 
@@ -60,6 +61,8 @@ const appStart = function(){
   const coords = [55.857236, -3.166804];
   const zoom = 2;
   mainMap = new MapWrapper(containerID, coords, zoom);
+  //markers = mainMap.markerClusterGroup();
+  //console.log(markers);
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
