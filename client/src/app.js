@@ -27,22 +27,22 @@ const handleSelected = function(countries){
   let selectTag = document.getElementById('countryDropDown');
 
   const country = allCountries[selectTag.value];
-  console.log(country);
   bucketListView.addCountry(country);
   bucketRequest.post(country);
 
   const coords = [country.latlng[0], country.latlng[1]];
-  console.log(coords);
   mainMap.addMarker(coords, country);
+};
+
+
+const handleDeleteAllCountriesButton = function(allCountries){
+  bucketRequest.delete(deleteAllCountriesComplete);
 };
 
 const deleteAllCountriesComplete = function(){
   bucketListView.clear();
 }
 
-const handleDeleteAllCountriesButton = function(allCountries){
-  request.delete(deleteAllCountriesComplete);
-}
 
 const appStart = function(){
   console.log('Hello world!')
