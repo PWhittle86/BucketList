@@ -59,6 +59,7 @@ const handleResetMapZoomButton = function(){
 
 
 const appStart = function(){
+
   console.log('Hello world!')
   bucketRequest.get(getAllBucketListCountries);
   countryRequest.get(pullCountriesFromCountriesAPI);
@@ -83,6 +84,10 @@ const appStart = function(){
   //markers = mainMap.markerClusterGroup();
   //console.log(markers);
 
+
+  // request.get(getAllBucketListCountries);
+  request.get(countryRequest);
+  debugger;
 }
 
 document.addEventListener('DOMContentLoaded', appStart);
