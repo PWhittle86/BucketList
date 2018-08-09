@@ -27,6 +27,10 @@ BucketListView.prototype.render = function(country){
     let furtherInfo = new FurtherInfoView();
     furtherInfo.clearContent();
     furtherInfo.render(country);
+
+    const coords = [country.latlng[0], country.latlng[1]];
+    const zoom = 6;
+    mainMap.moveMap(coords, zoom);
   });
 
 }
