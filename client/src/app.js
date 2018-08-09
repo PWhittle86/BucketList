@@ -51,6 +51,12 @@ const deleteAllCountriesComplete = function(){
   mainMap.clearLayer
 }
 
+const handleResetMapZoomButton = function(){
+  const coords = [55.857236, -3.166804];
+  const zoom = 2;
+  mainMap.moveMap(coords, zoom);
+}
+
 
 const appStart = function(){
   console.log('Hello world!')
@@ -63,6 +69,9 @@ const appStart = function(){
 
   const deleteAllCountriesButton = document.querySelector('#deleteButton');
   deleteAllCountriesButton.addEventListener('click', handleDeleteAllCountriesButton);
+
+  const resetMapZoomButton = document.querySelector('#resetmapzoom')
+  resetMapZoomButton.addEventListener('click', handleResetMapZoomButton);
 
 
   const osmLayer = new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png")
